@@ -11,6 +11,7 @@ CORS(app)  # Allow all origins
 # Load YOLO model once (not inside function, so it's faster)
 model = YOLO('queen-cell-2.pt', task='detect', device='cpu', weights_only=False)
 
+
 @app.route("/", methods=["GET"])
 def index():
     return "✅ Flask YOLOv8 server is running!"
