@@ -4,7 +4,6 @@ from PIL import Image
 import io
 from flask_cors import CORS
 
-# Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Allow all origins
 
@@ -14,7 +13,7 @@ model = YOLO('queen-cell-2.pt', task='detect', device='cpu', weights_only=False)
 
 @app.route("/", methods=["GET"])
 def index():
-    return "✅ Flask YOLOv8 server is running!"
+    return "Flask YOLOv8 server is running!"
 
 
 @app.route("/predict", methods=["POST"])
@@ -29,10 +28,8 @@ def predict():
         # Open image
         img = Image.open(io.BytesIO(file.read())).convert("RGB")
 
-        # Run YOLO prediction
         results = model.predict(img)
 
-        # Collect detections
         detections = []
         for r in results:
             for box in r.boxes:
