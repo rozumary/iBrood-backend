@@ -7,7 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app) 
 
-# Load YOLO model once (not inside function, so it's faster)
+# this is the YOLO model for queen cell
 model = YOLO('queen-cell-2.pt', task='detect', device='cpu', weights_only=False)
 
 
@@ -45,7 +45,7 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
+# displaying
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
 
