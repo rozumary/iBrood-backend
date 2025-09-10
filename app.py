@@ -7,14 +7,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app) 
 
-# Load YOLO model once (not inside function, so it's faster)
+# YOLO model
 model = YOLO('queen-cell-2.pt', task='detect', device='cpu', weights_only=False)
-
 
 @app.route("/", methods=["GET"])
 def index():
     return "Flask YOLOv8 server is running!"
-
 
 @app.route("/predict", methods=["POST"])
 def predict():
