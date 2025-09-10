@@ -1,4 +1,4 @@
-iBrood-backend
+iBrood-backend: This is a practice implementation for web intelligent system with different dataset and model versions.
 
 <br/>
 
