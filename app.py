@@ -7,14 +7,12 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app) 
 
-# this is the YOLO model for queen cell
+# YOLO model for queen cell version 2
 model = YOLO('queen-cell-2.pt', task='detect', device='cpu', weights_only=False)
-
 
 @app.route("/", methods=["GET"])
 def index():
     return "Flask YOLOv8 server is running!"
-
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -48,4 +46,3 @@ def predict():
 # displaying
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-
